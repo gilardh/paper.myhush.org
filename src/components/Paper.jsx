@@ -3,9 +3,8 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { QRCode }           from 'react-qr-svg';
 import zencashjs            from 'zencashjs';
 
-// import art1 from '../zen_paper_front.png';
-// import art2 from '../zen_paper_back.png';
-import art3 from '../zen_paper_sidebyside.png';
+import art1 from '../zen_paper_front.png';
+import art2 from '../zen_paper_back.png';
 
 class Paper extends Component {
     constructor(props) {
@@ -34,7 +33,7 @@ class Paper extends Component {
 
     render() {
         return (
-            <div id="Paper">
+            <Col md={12} id="Paper">
                 <hr />
                 <Row className="r1">
                     <Col md={2}>
@@ -57,35 +56,46 @@ class Paper extends Component {
 
                             <img alt="art1"
                             className="print-only"
-                            id="art1" src={art3} />
+                            id="art1" src={art1} />
+                            <img alt="art2"
+                            className="print-only"
+                            id="art2" src={art2} />
 
                             <div id="art-area">
 
-
-                                <span id="wif-QR">
-                                    <QRCode
-                                        bgColor="#FFFFFF"
-                                        fgColor="#000000"
-                                        level="L"
-                                        value={this.state.wif}
-                                    />
-                                </span>
-
-                                <b id="wif-str">
-                                    {this.state.wif}
-                                </b>
 
                                 <span id="addr-QR">
                                     <QRCode
                                         bgColor="#FFFFFF"
                                         fgColor="#000000"
                                         level="L"
+                                        style={{ width: 96 }}
                                         value={this.state.addr}
                                     />
                                 </span>
 
-                                <b id="addr-str">
+                                <b id="addr-str1">
                                     {this.state.addr}
+                                </b>
+                                <b id="addr-str2">
+                                    {this.state.addr}
+                                </b>
+
+                                <span id="wif-QR">
+                                    <QRCode
+                                        bgColor="#FFFFFF"
+                                        fgColor="#000000"
+                                        level="L"
+                                        style={{ width: 96 }}
+                                        value={this.state.wif}
+                                    />
+                                </span>
+
+                                <b id="wif-str1">
+                                    {this.state.wif}
+                                </b>
+                                <b id="wif-str2">
+                                    {this.state.wif}
                                 </b>
 
                             </div>
@@ -109,7 +119,7 @@ class Paper extends Component {
                         </p>
                     </Col>
                 </Row>
-            </div>
+            </Col>
         );
     }
 }
