@@ -1,20 +1,18 @@
-import React, { Component }     from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import React from 'react';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import NavItem from 'react-bootstrap/NavItem'
 
 import logoFull from "../logo_full.png";
 
-export default class Header extends Component {
-
+export default class Header extends React.Component {
     render() {
         return (
-
-            <Navbar id="header" className="zenHeader" fluid={true}>
+            <Navbar id="header" className="zenHeader">
                 <div className="container">
-                    <Navbar.Header>
                         <Navbar.Brand>
                             <img src={logoFull} alt="logo"/>
                         </Navbar.Brand>
-                    </Navbar.Header>
                     <Nav pullRight>
                         <NavItem href="https://myzenwallet.io/" className="headerLeftOption">WEB WALLET</NavItem>
                         <Navbar.Text>|</Navbar.Text>
@@ -24,7 +22,6 @@ export default class Header extends Component {
                     </Nav>
                 </div>
             </Navbar>
-
         );
     }
 }

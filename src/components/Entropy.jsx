@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col, FormGroup, ControlLabel, FormControl, ProgressBar }
-from 'react-bootstrap';
+import { Row, Col, FormGroup, FormControl, ProgressBar } from 'react-bootstrap';
+import FormLabel from 'react-bootstrap/FormLabel'
+
 
 import {randomBytes} from 'crypto-browserify';
 
@@ -136,7 +137,7 @@ class Entropy extends Component {
                       ><p>Move your mouse randomly in this area</p></div>
                       <p>
                         <FormGroup controlId="formControlsTextarea">
-                            <ControlLabel>Type random keys from your keyboard here :</ControlLabel>
+                            <FormLabel>Type random keys from your keyboard here :</FormLabel>
                             <FormControl
                                 type="text"
                                 onKeyPress={e => this.seedKeyPress(e)}

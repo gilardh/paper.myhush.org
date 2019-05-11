@@ -1,6 +1,7 @@
-import React, { Component }             from 'react';
-import { Tabs, Tab, Row, Col, Grid }    from 'react-bootstrap';
-import { randomBytes }                  from 'crypto-browserify';
+import React, { Component } from 'react';
+import { Tabs, Tab, Row, Col } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container'
+import { randomBytes } from 'crypto-browserify';
 
 import Single   from "./Single";
 import Brain    from "./Brain";
@@ -96,13 +97,13 @@ export default class MainPanel extends Component {
     render() {
         return (
             <div id="body">
-                <Grid>
+                <Container>
                     <Row>
                         <Col sm={12}>
                             {this.renderMainPanel()}
                         </Col>
                     </Row>
-                </Grid>
+                </Container>
             </div>
         );
     }

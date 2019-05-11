@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col }   from 'react-bootstrap';
+import { Row, Col }   from 'react-bootstrap';
+import Container from 'react-bootstrap/Container'
 
 import website from "../website.png";
 import blogger from "../blogger.png";
@@ -16,7 +17,7 @@ import reddit from "../reddit.png";
 export default class Footer extends Component {
     render() {
         return (
-            <Grid fluid={true} id="footer">
+            <Container fluid={true} id="footer">
                 <br />
                 <Row>
                     <Col md={12} className="footerSocialWrap">
@@ -89,7 +90,7 @@ export default class Footer extends Component {
                         </p>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         );
     }
 }

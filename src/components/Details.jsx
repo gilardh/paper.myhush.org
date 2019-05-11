@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, FormGroup, Radio, ControlLabel, FormControl }
-                            from 'react-bootstrap';
-import { QRCode }           from 'react-qr-svg';
-import zencashjs            from 'zencashjs';
+import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormLabel from 'react-bootstrap/FormLabel'
+import { QRCode } from 'react-qr-svg';
+import hushjs from 'hushjs'
 
 
 class Details extends Component {
@@ -36,17 +37,17 @@ class Details extends Component {
             || this.state.input[0] === 'L'
             || this.state.input[0] === 'K') {
                 privWIF = this.state.input;
-                priv    = zencashjs.address.WIFToPrivKey(privWIF);
+                priv    = hushjs.address.WIFToPrivKey(privWIF);
             } else {
                 priv    = this.state.input;
-                privWIF = zencashjs.address.privKeyToWIF(priv, true);
+                privWIF = hushjs.address.privKeyToWIF(priv, true);
             }
         } catch(e) {
             return alert("Invalid Private Key");
         }
 
-        const pubKey    = zencashjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = zencashjs.address.pubKeyToAddr(pubKey);
+        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
+        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -66,17 +67,17 @@ class Details extends Component {
             if(!z_secretKey) throw(z_secretKey);
             if(z_secretKey[0] !== '0') throw(z_secretKey);
 
-            spendingKey = zencashjs.zaddress
+            spendingKey = hushjs.zaddress
                             .zSecretKeyToSpendingKey(z_secretKey);
-            a_pk        = zencashjs.zaddress
+            a_pk        = hushjs.zaddress
                             .zSecretKeyToPayingKey(z_secretKey);
-            pk_enc      = zencashjs.zaddress
+            pk_enc      = hushjs.zaddress
                             .zSecretKeyToTransmissionKey(z_secretKey);
         } catch(e) {
             return alert("Invalid Private Key");
         }
 
-        const Zaddress  = zencashjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const Zaddress  = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,
@@ -110,24 +111,24 @@ class Details extends Component {
                 <Row className="r1">
                     <Col md={3}>
                         <FormGroup>
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('T')}
                             checked={this.state.type === 'T'} inline>
                                 T Address
-                            </Radio>
+                            </InputGroup>
                             <br />
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('Z')}
                             checked={this.state.type === 'Z'} inline>
                                 Z Address
-                            </Radio>
+                            </InputGroup>
                         </FormGroup>
                     </Col>
                     <Col md={3}>
                         <FormGroup controlId="privateKey"
                             bsSize="sm"
                         >
-                            <ControlLabel>Enter Private Key</ControlLabel>
+                            <FormLabel>Enter Private Key</FormLabel>
                             <FormControl type="text"
                                 onChange={e => this.updateInputValue(e)}
                             />
@@ -213,7 +214,7 @@ class Details extends Component {
                             Entering your private key here allows you to regenerate your Zen Address and print your wallet if you wish.
                         </p>
                         <p>
-                            <b>Warning: make sure you are on ZENPAPERWALLET.COM !</b>
+                            <b>Warning: make sure you are on https://paper.myhush.org !</b>
                         </p>
                         <p>
                             Your private key is a sensitive element. Whomever knows it can manage your funds. If you enter your private key into some website double-check the URL to avoid phishing attempts.

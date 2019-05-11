@@ -1,8 +1,9 @@
-import React, { Component }     from 'react';
-import { Row, Col, Button, FormGroup, ControlLabel, FormControl, Table, Radio }
-                                from 'react-bootstrap';
-import { address, zaddress }    from 'zencashjs';
-import { QRCode }               from 'react-qr-svg';
+import React, { Component } from 'react';
+import { Row, Col, Button, FormGroup, FormControl, Table } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormLabel from 'react-bootstrap/FormLabel'
+import { address, zaddress } from 'hushjs';
+import { QRCode } from 'react-qr-svg';
 
 import art1 from '../zen_paper_front.png';
 import art2 from '../zen_paper_back.png';
@@ -111,7 +112,7 @@ class Bulk extends Component {
                         <FormGroup controlId="startIndex"
                             bsSize="sm"
                         >
-                            <ControlLabel>Start Index</ControlLabel>
+                            <FormLabel>Start Index</FormLabel>
                             <FormControl type="text"
                                 value={this.state.inputValue}
                                 onChange={e => this.updateInputValue(e)}
@@ -122,7 +123,7 @@ class Bulk extends Component {
                         <FormGroup controlId="nbRows"
                             bsSize="sm"
                         >
-                            <ControlLabel>Rows to generate</ControlLabel>
+                            <FormLabel>Rows to generate</FormLabel>
                             <FormControl type="text"
                                 value={this.state.inputValue}
                                 onChange={e => this.updateInputValue(e)}
@@ -131,17 +132,17 @@ class Bulk extends Component {
                     </Col>
                     <Col md={3}>
                         <FormGroup>
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('T')}
                             checked={this.state.type === 'T'} inline>
                                 T Address
-                            </Radio>
+                            </InputGroup>
                             <br />
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('Z')}
                             checked={this.state.type === 'Z'} inline>
                                 Z Address
-                            </Radio>
+                            </InputGroup>
                         </FormGroup>
                     </Col>
                     <Col md={1}>

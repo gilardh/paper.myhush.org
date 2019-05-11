@@ -1,8 +1,8 @@
-import React, { Component }     from 'react';
-import { Row, Col, Button, FormGroup, ControlLabel, FormControl }
-                                from 'react-bootstrap';
-import { QRCode }               from 'react-qr-svg';
-import { address }              from 'zencashjs';
+import React, { Component } from 'react';
+import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
+import FormLabel from 'react-bootstrap/FormLabel'
+import { QRCode } from 'react-qr-svg';
+import { address } from 'hushjs';
 
 class Multisig extends Component {
     constructor(props) {
@@ -65,7 +65,7 @@ class Multisig extends Component {
                         <FormGroup controlId="min"
                             bsSize="sm"
                         >
-                            <ControlLabel>Minimum signatures</ControlLabel>
+                            <FormLabel>Minimum signatures</FormLabel>
                             <FormControl type="text"
                                 placeholder="2"
                                 value={this.state.inputValue}
@@ -77,7 +77,7 @@ class Multisig extends Component {
                         <FormGroup controlId="max"
                             bsSize="sm"
                         >
-                            <ControlLabel>Total shares</ControlLabel>
+                            <FormLabel>Total shares</FormLabel>
                             <FormControl type="text"
                                 placeholder="3"
                                 value={this.state.inputValue}

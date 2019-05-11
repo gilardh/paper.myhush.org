@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, FormGroup, ControlLabel, Radio, FormControl }
-                            from 'react-bootstrap';
-import { QRCode }           from 'react-qr-svg';
-import zencashjs            from 'zencashjs';
+import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormLabel from 'react-bootstrap/FormLabel'
+import { QRCode }  from 'react-qr-svg';
+import hushjs from 'hushjs';
 
 class Brain extends Component {
     constructor(props) {
@@ -30,13 +31,13 @@ class Brain extends Component {
         for(let i = 0 ; i < it ; i++) {
             if((i*100/it) % 10 === 0) console.log((i*100/it) + "%");
 
-            priv      = zencashjs.address.mkPrivKey(this.props.entropy + i);
+            priv      = hushjs.address.mkPrivKey(this.props.entropy + i);
 
-            pub    = zencashjs.address.privKeyToPubKey(priv);
-            addr    = zencashjs.address.pubKeyToAddr(pub);
+            pub    = hushjs.address.privKeyToPubKey(priv);
+            addr    = hushjs.address.pubKeyToAddr(pub);
 
-            c_pub    = zencashjs.address.privKeyToPubKey(priv, true);
-            c_addr    = zencashjs.address.pubKeyToAddr(c_pub);
+            c_pub    = hushjs.address.privKeyToPubKey(priv, true);
+            c_addr    = hushjs.address.pubKeyToAddr(c_pub);
 
             if (addr.search("zn" + word) !== -1
             ||  c_addr.search("zn" + word) !== -1) {
@@ -46,8 +47,8 @@ class Brain extends Component {
         }
         console.log("<------END");
 
-        wif     = zencashjs.address.privKeyToWIF(priv);
-        c_wif    = zencashjs.address.privKeyToWIF(priv, true);
+        wif     = hushjs.address.privKeyToWIF(priv);
+        c_wif    = hushjs.address.privKeyToWIF(priv, true);
         this.setState({
             priv: priv,
             wif: wif,
@@ -69,10 +70,10 @@ class Brain extends Component {
             if(Number.isInteger(it)) return this.vanity(words[1], it);
         }
 
-        const priv      = zencashjs.address.mkPrivKey(this.state.passphrase);
-        const privWIF   = zencashjs.address.privKeyToWIF(priv, true);
-        const pubKey    = zencashjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = zencashjs.address.pubKeyToAddr(pubKey);
+        const priv      = hushjs.address.mkPrivKey(this.state.passphrase);
+        const privWIF   = hushjs.address.privKeyToWIF(priv, true);
+        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
+        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -84,15 +85,15 @@ class Brain extends Component {
     genZAddress() {
         if(!this.state.passphrase) return;
 
-        const z_secretKey   = zencashjs.zaddress
+        const z_secretKey   = hushjs.zaddress
                                 .mkZSecretKey(this.state.passphrase);
-        const spendingKey   = zencashjs.zaddress
+        const spendingKey   = hushjs.zaddress
                                 .zSecretKeyToSpendingKey(z_secretKey);
-        const a_pk          = zencashjs.zaddress
+        const a_pk          = hushjs.zaddress
                                 .zSecretKeyToPayingKey(z_secretKey);
-        const pk_enc        = zencashjs.zaddress
+        const pk_enc        = hushjs.zaddress
                                 .zSecretKeyToTransmissionKey(z_secretKey);
-        const Zaddress      = zencashjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const Zaddress      = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,
@@ -122,22 +123,22 @@ class Brain extends Component {
                 <Row className="r1">
                     <Col md={3}>
                         <FormGroup>
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('T')}
                             checked={this.state.type === 'T'} inline>
                                 T Address
-                            </Radio>
+                            </InputGroup>
                             <br />
-                            <Radio name="radioGroup"
+                            <InputGroup type='radio' name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('Z')}
                             checked={this.state.type === 'Z'} inline>
                                 Z Address
-                            </Radio>
+                            </InputGroup>
                         </FormGroup>
                     </Col>
                     <Col md={3}>
                         <FormGroup controlId="formControlsTextarea">
-                            <ControlLabel>Secret Passphrase</ControlLabel>
+                            <FormLabel>Secret Passphrase</FormLabel>
                             <FormControl componentClass="textarea"
                                 placeholder="Enter your secret passphrase here"
                                 value={this.state.inputValue}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, FormGroup, Radio }
-                            from 'react-bootstrap';
-import { QRCode }           from 'react-qr-svg';
-import zencashjs            from 'zencashjs';
+import { Row, Col, Button, FormGroup } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup'
+import { QRCode } from 'react-qr-svg';
+import hushjs from 'hushjs';
 
 class Single extends Component {
     constructor(props) {
@@ -16,11 +16,11 @@ class Single extends Component {
     }
 
     genTAddress() {
-        const priv      = zencashjs.address
+        const priv      = hushjs.address
             .mkPrivKey(this.props.entropy + new Date().getTime());
-        const privWIF   = zencashjs.address.privKeyToWIF(priv, true);
-        const pubKey    = zencashjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = zencashjs.address.pubKeyToAddr(pubKey);
+        const privWIF   = hushjs.address.privKeyToWIF(priv, true);
+        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
+        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -30,15 +30,15 @@ class Single extends Component {
     }
 
     genZAddress() {
-        const z_secretKey   = zencashjs.zaddress
+        const z_secretKey   = hushjs.zaddress
             .mkZSecretKey(this.props.entropy + new Date().getTime());
-        const spendingKey   = zencashjs.zaddress
+        const spendingKey   = hushjs.zaddress
                                 .zSecretKeyToSpendingKey(z_secretKey);
-        const a_pk          = zencashjs.zaddress
+        const a_pk          = hushjs.zaddress
                                 .zSecretKeyToPayingKey(z_secretKey);
-        const pk_enc        = zencashjs.zaddress
+        const pk_enc        = hushjs.zaddress
                                 .zSecretKeyToTransmissionKey(z_secretKey);
-        const Zaddress      = zencashjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const Zaddress      = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,
@@ -69,17 +69,17 @@ class Single extends Component {
 
                     <Col md={4}>
                         <FormGroup>
-                            <Radio name="radioGroup"
+                            <InputGroup type="radio" name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('T')}
                             checked={this.state.type === 'T'} inline>
                                 T Address
-                            </Radio>
+                            </InputGroup>
                             <br />
-                            <Radio name="radioGroup"
+                            <InputGroup type="radio" name="radioGroup"
                             onMouseDown={() => this.handleCheckRadio('Z')}
                             checked={this.state.type === 'Z'} inline>
                                 Z Address
-                            </Radio>
+                            </InputGroup>
                         </FormGroup>
                     </Col>
 
