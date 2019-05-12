@@ -4,7 +4,7 @@ import registerServiceWorker    from './registerServiceWorker';
 import App from './App.js';
 
 // Main CSS
-//import './App.css';
+import './App.css';
 
 // Main app picked up by the index.html file
 render(<App />, document.getElementById('root'));
