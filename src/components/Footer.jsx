@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col }   from 'react-bootstrap';
-import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 import website from "../website.png";
 import blogger from "../blogger.png";
@@ -14,82 +16,39 @@ import bitcointalk from "../bitcointalk.png";
 import youtube from "../youtube.png";
 import reddit from "../reddit.png";
 
+import logo from "../images/favicon.ico";
+
 export default class Footer extends Component {
     render() {
         return (
             <Container fluid={true} id="footer">
                 <br />
-                <Row>
-                    <Col md={12} className="footerSocialWrap">
-                        <ul className="footerSocial">
-                            <li>
-                                <a href="https://horizen.global">
-                                    <img src={website} alt="website"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://blog.horizen.global/">
-                                    <img src={blogger} alt="blogger"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://forum.horizen.global/">
-                                    <img src={forum} alt="forum"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/ZencashOfficial">
-                                    <img src={github} alt="github"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/horizenglobal/">
-                                    <img src={facebook} alt="facebook"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/horizenglobal/">
-                                    <img src={twitter} alt="twitter"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://horizen.global/invite/telegram">
-                                   <img src={telegram} alt="telegram"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://discordapp.com/invite/Hu5mQxR">
-                                    <img src={discord} alt="discord"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://bitcointalk.org/index.php?topic=2047435.0">
-                                    <img src={bitcointalk} alt="bitcointalk"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com/channel/UCQ0v_lUnZHIKUQUXJzfgqOg">
-                                    <img src={youtube} alt="youtube"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.reddit.com/r/Horizen/">
-                                    <img src={reddit} alt="reddit"/>
-                                </a>
-                            </li>
-                        </ul>
+                <div >
+                <Row className="justify-content-md-center">
+                    <Col xs={6} md={3}>
+                        <Image src={logo} fluid />
                     </Col>
+
+                    <Col xs={6} md={3}>
+                        <Image src={logo} fluid />
+                    </Col>
+
+                    </Row>
+                </div>
+                    
+                <div class="text-center">
+                <Row >
                     <Col md={12}>
                         <p className="footerCopyright">
                             Addresses and Keys are generated client-side.
-                            This project is <a href="https://github.com/ZencashOfficial/zenaddress">opensource</a> under MIT licence.
+                            This project is <a href="https://github.com/MyHush/paper.myhush.org">opensource</a> under MIT licence.
                         </p>
                         <p className="footerCopyright">
-                            If you have any question or suggestion, email me <b>Gniar@pm.me</b> or find me on
-                            slack/discord/telegram <b>@Gniar</b>.
+                            If you have any question or suggestion, find us on <a href="https://myhush.org/discord/">Discord</a>.
                         </p>
                     </Col>
                 </Row>
+                </div>
             </Container>
         );
     }
