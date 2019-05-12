@@ -154,9 +154,9 @@ class Single extends Component {
                             <b>Check your balance</b> by entering your HUSH address on one of these explorers :
                         </p>
                         <ul style={{listStyleType: 'none'}}>
-                            <li><a href="https://explorer.zensystem.io/">https://explorer.zensystem.io/</a></li>
-                            <li><a href="http://explorer.zenmine.pro/insight/">http://explorer.zenmine.pro/insight/</a></li>
-                            <li><a href="https://explorer.zen-solutions.io/">https://explorer.zen-solutions.io/</a></li>
+                            <li><a href="https://explorer.myhush.org">https://explorer.myhush.org</a></li>
+                            <li><a href="https://hush.explorer.dexstats.info">https://hush.explorer.dexstats.info</a></li>
+                            <li><a href="https://hush3.komodod.com">https://hush3.komodod.com</a></li>
                         </ul>
                         <p>
                             <b>To spend your Hush</b> you can download the <a href='https://github.com/hushmate/HUSHmate-swing-wallet'>HUSH Swing Wallet</a> and import your private key to the p2p client wallet.
