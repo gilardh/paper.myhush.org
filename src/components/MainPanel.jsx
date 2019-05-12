@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Tabs, Tab, Row, Col } from 'react-bootstrap';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import { randomBytes } from 'crypto-browserify';
+
+
+
 
 import Single   from "./Single";
 import Brain    from "./Brain";
