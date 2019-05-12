@@ -4,17 +4,17 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
-import website from "../website.png";
-import blogger from "../blogger.png";
-import forum from "../forum.png";
-import github from "../github.png";
-import facebook from "../facebook.png";
-import twitter from "../twitter.png";
-import telegram from "../telegram.png";
-import discord from "../discord.png";
-import bitcointalk from "../bitcointalk.png";
-import youtube from "../youtube.png";
-import reddit from "../reddit.png";
+//import website from "../website.png";
+//import blogger from "../blogger.png";
+//import forum from "../forum.png";
+//import github from "../github.png";
+//import facebook from "../facebook.png";
+//import twitter from "../twitter.png";
+//import telegram from "../telegram.png";
+//import discord from "../discord.png";
+//import bitcointalk from "../bitcointalk.png";
+//import youtube from "../youtube.png";
+//import reddit from "../reddit.png";
 
 import logo from "../images/favicon.ico";
 
