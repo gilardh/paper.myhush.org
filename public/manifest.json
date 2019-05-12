@@ -1,11 +1,11 @@
 {
-  "short_name": "ZenPaperWallet.com",
-  "name": "Zencash Wallet Generator",
+  "short_name": "HushPaperWallet",
+  "name": "My Hush Paper Wallet",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon.ico",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/ico"
     }
   ],
   "start_url": "./index.html",
