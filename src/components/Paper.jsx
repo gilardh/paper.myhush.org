@@ -98,7 +98,7 @@ class Paper extends Component {
                 <Row className="r3">
                     <Col>
                         <p>
-                          A paper wallet is a piece of paper containing a public address and a private key. It allows you to store some ZENs offline.
+                          A paper wallet is a piece of paper containing a public address and a private key. It allows you to store some HUSH offline.
                         </p>
                         <p>
                           These kind of wallets are vulnerable to loss and theft. You should keep it safe like jewels or cash. Therefore it is recommended either to have a backup or to generate it only for a temporary use.

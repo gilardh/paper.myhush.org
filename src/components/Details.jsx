@@ -99,7 +99,7 @@ class Details extends Component {
     }
 
     getExplorerAddress() {
-        return("https://explorer.zensystem.io/address/" + this.state.addr);
+        return("https://explorer.myhush.org/address/" + this.state.addr);
     }
 
     render() {
@@ -151,7 +151,7 @@ class Details extends Component {
                     <Row className="r2">
                         <Col md={6} className="max-width">
                             <h1 style={{color:'green'}}>Public</h1>
-                            <h3>Zen Address</h3>
+                            <h3>HUSH Address</h3>
                             <div>
                                 <QRCode
                                     bgColor="#FFFFFF"
@@ -193,7 +193,7 @@ class Details extends Component {
                 <hr />
                 <Row className="r3">
                     <Col>
-                        {this.state.addr && this.state.type === 'T' ? (
+                        {this.state.addr && this.state.type === 'R' ? (
                             <p>
                                 <Button bsStyle="primary"
                                 href={this.getExplorerAddress()}
@@ -203,13 +203,13 @@ class Details extends Component {
                             </p>
                         ) : this.state.addr && this.state.type === 'Z' ? (
                             <p>
-                                This is a Z-address (shielded address) meaning your balance is hidden. To check your balance import your Spending Key into the <a href='https://github.com/ZencashOfficial/zencash-swing-wallet-ui/releases'>ZEN Swing Wallet</a>
+                                This is a Z-address (shielded address) meaning your balance is hidden. To check your balance import your Spending Key into the <a href='https://github.com/hushmate/HUSHmate-swing-wallet'>HUSH Swing Wallet</a>
                             </p>
                         ) : (
                             <p></p>
                         )}
                         <p>
-                            Entering your private key here allows you to regenerate your Zen Address and print your wallet if you wish.
+                            Entering your private key here allows you to regenerate your HUSH Address and print your wallet if you wish.
                         </p>
                         <p>
                             <b>Warning: make sure you are on https://paper.myhush.org !</b>

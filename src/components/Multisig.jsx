@@ -101,7 +101,7 @@ class Multisig extends Component {
                     <Row className="r2">
                         <Col md={4} className="max-width">
                             <h1 style={{color:'green'}}>Public</h1>
-                            <h3>Zen Address</h3>
+                            <h3>HUSH Address</h3>
                             <div>
                                 <QRCode
                                     bgColor="#FFFFFF"
