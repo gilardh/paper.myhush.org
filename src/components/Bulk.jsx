@@ -148,7 +148,7 @@ class Bulk extends Component {
                         </FormGroup>
                     </Col>
                     <Col md={1}>
-                        <Button onClick={this.state.type === 'T' ?
+                        <Button variant="secondary" onClick={this.state.type === 'T' ?
                             () => this.genTAddress()
                             : () => this.genZAddress()}
                         >
@@ -156,12 +156,12 @@ class Bulk extends Component {
                         </Button>
                     </Col>
                     <Col md={1}>
-                        <Button onClick={() => this.handlePrint(false)}>
+                        <Button variant="secondary" onClick={() => this.handlePrint(false)}>
                             Print
                         </Button>
                     </Col>
-                    <Col md={1}>
-                        <Button onClick={() => this.handlePrint(true)}>
+                    <Col md={2}>
+                        <Button variant="secondary" onClick={() => this.handlePrint(true)}>
                             Paper Print
                         </Button>
                     </Col>

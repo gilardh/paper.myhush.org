@@ -129,7 +129,7 @@ class Entropy extends Component {
           <Col md={12} id="Entropy">
               <Row className="r3">
                   <Col>
-                      <ProgressBar
+                      <ProgressBar variant="secondary"
                         now={this.getSeedingProgress()}
                         label={`${this.getSeedingProgress()}%`} />
                       <div id="seedMouseBox"

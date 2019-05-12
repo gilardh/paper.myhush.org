@@ -36,13 +36,13 @@ class Paper extends Component {
             <div id="Paper">
                 <hr />
                 <Row className="r1">
-                    <Col md={2}>
-                        <Button onClick={() => this.genAddress()}>
+                    <Col md={3}>
+                        <Button variant="secondary" onClick={() => this.genAddress()}>
                             Generate a new wallet
                         </Button>
                     </Col>
                     <Col md={2}>
-                        <Button onClick={window.print}>
+                        <Button variant="secondary" onClick={window.print}>
                             Print
                         </Button>
                     </Col>

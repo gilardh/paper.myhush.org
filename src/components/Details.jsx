@@ -133,7 +133,7 @@ class Details extends Component {
                         </FormGroup>
                     </Col>
                     <Col md={2}>
-                        <Button onClick={this.state.type === 'T' ?
+                        <Button variant="secondary" onClick={this.state.type === 'T' ?
                             () => this.genTAddress()
                             : () => this.genZAddress()}
                         >
@@ -141,7 +141,7 @@ class Details extends Component {
                         </Button>
                     </Col>
                     <Col md={2}>
-                        <Button onClick={window.print}>
+                        <Button variant="secondary" onClick={window.print}>
                             Print
                         </Button>
                     </Col>

@@ -143,8 +143,8 @@ class Brain extends Component {
                             />
                         </FormGroup>
                     </Col>
-                    <Col md={2}>
-                        <Button onClick={this.state.type === 'T' ?
+                    <Col md={3}>
+                        <Button variant="secondary" onClick={this.state.type === 'T' ?
                             () => this.genTAddress()
                             : () => this.genZAddress()}
                         >
@@ -152,7 +152,7 @@ class Brain extends Component {
                         </Button>
                     </Col>
                     <Col md={2}>
-                        <Button onClick={window.print}>
+                        <Button variant="secondary" onClick={window.print}>
                             Print
                         </Button>
                     </Col>

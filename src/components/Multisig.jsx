@@ -86,12 +86,12 @@ class Multisig extends Component {
                         </FormGroup>
                     </Col>
                     <Col md={1}>
-                        <Button onClick={() => this.genAddress()}>
+                        <Button variant="secondary" onClick={() => this.genAddress()}>
                             Generate
                         </Button>
                     </Col>
                     <Col md={1}>
-                        <Button onClick={window.print}>
+                        <Button variant="secondary" onClick={window.print}>
                             Print
                         </Button>
                     </Col>
