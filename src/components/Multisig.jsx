@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
 import FormLabel from 'react-bootstrap/FormLabel'
 import { QRCode } from 'react-qr-svg';
-import { address } from 'hushjs';
+import address from '../components/lib/hushjs/address'
 
 class Multisig extends Component {
     constructor(props) {

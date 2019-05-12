@@ -3,7 +3,8 @@ import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormLabel from 'react-bootstrap/FormLabel'
 import { QRCode }  from 'react-qr-svg';
-import hushjs from 'hushjs';
+import address from '../components/lib/hushjs/address'
+import zaddress from '../components/lib/hushjs/zaddress'
 
 class Brain extends Component {
     constructor(props) {
@@ -31,13 +32,13 @@ class Brain extends Component {
         for(let i = 0 ; i < it ; i++) {
             if((i*100/it) % 10 === 0) console.log((i*100/it) + "%");
 
-            priv      = hushjs.address.mkPrivKey(this.props.entropy + i);
+            priv      = address.mkPrivKey(this.props.entropy + i);
 
-            pub    = hushjs.address.privKeyToPubKey(priv);
-            addr    = hushjs.address.pubKeyToAddr(pub);
+            pub    = address.privKeyToPubKey(priv);
+            addr    = address.pubKeyToAddr(pub);
 
-            c_pub    = hushjs.address.privKeyToPubKey(priv, true);
-            c_addr    = hushjs.address.pubKeyToAddr(c_pub);
+            c_pub    = address.privKeyToPubKey(priv, true);
+            c_addr    = address.pubKeyToAddr(c_pub);
 
             if (addr.search("zn" + word) !== -1
             ||  c_addr.search("zn" + word) !== -1) {
@@ -47,8 +48,8 @@ class Brain extends Component {
         }
         console.log("<------END");
 
-        wif     = hushjs.address.privKeyToWIF(priv);
-        c_wif    = hushjs.address.privKeyToWIF(priv, true);
+        wif     = address.privKeyToWIF(priv);
+        c_wif    = address.privKeyToWIF(priv, true);
         this.setState({
             priv: priv,
             wif: wif,
@@ -70,10 +71,10 @@ class Brain extends Component {
             if(Number.isInteger(it)) return this.vanity(words[1], it);
         }
 
-        const priv      = hushjs.address.mkPrivKey(this.state.passphrase);
-        const privWIF   = hushjs.address.privKeyToWIF(priv, true);
-        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
+        const priv      = address.mkPrivKey(this.state.passphrase);
+        const privWIF   = address.privKeyToWIF(priv, true);
+        const pubKey    = address.privKeyToPubKey(priv, true);
+        const znAddr    = address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -85,15 +86,11 @@ class Brain extends Component {
     genZAddress() {
         if(!this.state.passphrase) return;
 
-        const z_secretKey   = hushjs.zaddress
-                                .mkZSecretKey(this.state.passphrase);
-        const spendingKey   = hushjs.zaddress
-                                .zSecretKeyToSpendingKey(z_secretKey);
-        const a_pk          = hushjs.zaddress
-                                .zSecretKeyToPayingKey(z_secretKey);
-        const pk_enc        = hushjs.zaddress
-                                .zSecretKeyToTransmissionKey(z_secretKey);
-        const Zaddress      = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const z_secretKey   = zaddress.mkZSecretKey(this.state.passphrase);
+        const spendingKey   = zaddress.zSecretKeyToSpendingKey(z_secretKey);
+        const a_pk          = zaddress.zSecretKeyToPayingKey(z_secretKey);
+        const pk_enc        = zaddress.zSecretKeyToTransmissionKey(z_secretKey);
+        const Zaddress      = zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,

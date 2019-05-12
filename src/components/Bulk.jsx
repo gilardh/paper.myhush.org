@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col, Button, FormGroup, FormControl, Table } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormLabel from 'react-bootstrap/FormLabel'
-import { address, zaddress } from 'hushjs';
+import address from '../components/lib/hushjs/address'
+import zaddress from '../components/lib/hushjs/zaddress'
+
 import { QRCode } from 'react-qr-svg';
 
 import art1 from '../zen_paper_front.png';

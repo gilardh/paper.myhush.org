@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col, Button, FormGroup } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup'
 import { QRCode } from 'react-qr-svg';
-import hushjs from 'hushjs';
+import address from '../components/lib/hushjs/address'
+import zaddress from '../components/lib/hushjs/zaddress'
+
 
 class Single extends Component {
     constructor(props) {
@@ -16,11 +18,10 @@ class Single extends Component {
     }
 
     genTAddress() {
-        const priv      = hushjs.address
-            .mkPrivKey(this.props.entropy + new Date().getTime());
-        const privWIF   = hushjs.address.privKeyToWIF(priv, true);
-        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
+        const priv      = address.mkPrivKey(this.props.entropy + new Date().getTime());
+        const privWIF   = address.privKeyToWIF(priv, true);
+        const pubKey    = address.privKeyToPubKey(priv, true);
+        const znAddr    = address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -30,15 +31,11 @@ class Single extends Component {
     }
 
     genZAddress() {
-        const z_secretKey   = hushjs.zaddress
-            .mkZSecretKey(this.props.entropy + new Date().getTime());
-        const spendingKey   = hushjs.zaddress
-                                .zSecretKeyToSpendingKey(z_secretKey);
-        const a_pk          = hushjs.zaddress
-                                .zSecretKeyToPayingKey(z_secretKey);
-        const pk_enc        = hushjs.zaddress
-                                .zSecretKeyToTransmissionKey(z_secretKey);
-        const Zaddress      = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const z_secretKey   = zaddress.mkZSecretKey(this.props.entropy + new Date().getTime());
+        const spendingKey   = zaddress.zSecretKeyToSpendingKey(z_secretKey);
+        const a_pk          = zaddress.zSecretKeyToPayingKey(z_secretKey);
+        const pk_enc        = zaddress.zSecretKeyToTransmissionKey(z_secretKey);
+        const Zaddress      = zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,

@@ -3,7 +3,8 @@ import { Row, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormLabel from 'react-bootstrap/FormLabel'
 import { QRCode } from 'react-qr-svg';
-import hushjs from 'hushjs'
+import address from '../components/lib/hushjs/address'
+import zaddress from '../components/lib/hushjs/zaddress'
 
 
 class Details extends Component {
@@ -37,17 +38,17 @@ class Details extends Component {
             || this.state.input[0] === 'L'
             || this.state.input[0] === 'K') {
                 privWIF = this.state.input;
-                priv    = hushjs.address.WIFToPrivKey(privWIF);
+                priv    = address.WIFToPrivKey(privWIF);
             } else {
                 priv    = this.state.input;
-                privWIF = hushjs.address.privKeyToWIF(priv, true);
+                privWIF = address.privKeyToWIF(priv, true);
             }
         } catch(e) {
             return alert("Invalid Private Key");
         }
 
-        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
+        const pubKey    = address.privKeyToPubKey(priv, true);
+        const znAddr    = address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
@@ -67,17 +68,14 @@ class Details extends Component {
             if(!z_secretKey) throw(z_secretKey);
             if(z_secretKey[0] !== '0') throw(z_secretKey);
 
-            spendingKey = hushjs.zaddress
-                            .zSecretKeyToSpendingKey(z_secretKey);
-            a_pk        = hushjs.zaddress
-                            .zSecretKeyToPayingKey(z_secretKey);
-            pk_enc      = hushjs.zaddress
-                            .zSecretKeyToTransmissionKey(z_secretKey);
+            spendingKey = zaddress.zSecretKeyToSpendingKey(z_secretKey);
+            a_pk        = zaddress.zSecretKeyToPayingKey(z_secretKey);
+            pk_enc      = zaddress.zSecretKeyToTransmissionKey(z_secretKey);
         } catch(e) {
             return alert("Invalid Private Key");
         }
 
-        const Zaddress  = hushjs.zaddress.mkZAddress(a_pk, pk_enc);
+        const Zaddress  = zaddress.mkZAddress(a_pk, pk_enc);
 
         this.setState({
             priv: z_secretKey,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import { QRCode } from 'react-qr-svg';
-import hushjs from 'hushjs';
+import address from '../components/lib/hushjs/address'
 
 // import art1 from '../zen_paper_front.png';
 // import art2 from '../zen_paper_back.png';
@@ -19,11 +19,10 @@ class Paper extends Component {
     }
 
     genAddress() {
-        const priv      = hushjs.address
-            .mkPrivKey(this.props.entropy + new Date().getTime());
-        const privWIF   = hushjs.address.privKeyToWIF(priv, true);
-        const pubKey    = hushjs.address.privKeyToPubKey(priv, true);
-        const znAddr    = hushjs.address.pubKeyToAddr(pubKey);
+        const priv      = address.mkPrivKey(this.props.entropy + new Date().getTime());
+        const privWIF   = address.privKeyToWIF(priv, true);
+        const pubKey    = address.privKeyToPubKey(priv, true);
+        const znAddr    = address.pubKeyToAddr(pubKey);
 
         this.setState({
             priv: priv,
