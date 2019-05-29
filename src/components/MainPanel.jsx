@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import { randomBytes } from 'crypto-browserify';
 
-
-
-
 import Single   from "./Single";
 import Brain    from "./Brain";
 import Bulk     from "./Bulk";
@@ -38,9 +35,9 @@ export default class MainPanel extends Component {
             { id: 0,    title: "Single Address",        content: Single },
             { id: 1,    title: "Paper",                 content: Paper },
             { id: 2,    title: "Brain Wallet",          content: Brain },
-            { id: 3,    title: "Multisig Wallet",       content: Multisig },
-            { id: 4,    title: "Bulk Wallet",           content: Bulk },
-            { id: 5,    title: "Wallet Details",        content: Details }
+            //{ id: 3,    title: "Multisig Wallet",       content: Multisig },
+            { id: 3,    title: "Bulk Wallet",           content: Bulk },
+            { id: 4,    title: "Wallet Details",        content: Details }
         ];
     }
 
